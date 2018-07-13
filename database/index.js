@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-//const AutoIncrement = require('mongoose-sequence')(mongoose);
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
-
-mongoose.connect('mongodb://localhost/fetcher');
+mongoose.connect('mongodb://localhost/fetcher/');
 
 var db = mongoose.connection;
 db.on('error', console.log.bind(console, 'connection error'));
@@ -13,7 +12,7 @@ db.once('open', () =>{
     html_url: String
   })
 
-  //repoSchema.plugin(AutoIncrement, {inc_field: 'id'});
+  repoSchema.plugin(AutoIncrement, {inc_field: 'id'});
   let Repo = mongoose.model('Repo', repoSchema);
 
   let save = (repos) => {
@@ -32,6 +31,7 @@ db.once('open', () =>{
 
   save(test_array);
 
+  Repo.find({html_url:'https://api.github.com/users/octocat/subscriptions'}, () => {console.log('result')});
 
   module.exports.save = save;
 
