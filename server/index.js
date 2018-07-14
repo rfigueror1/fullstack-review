@@ -15,13 +15,14 @@ app.post('/repos', function (req, res) {
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database
+  console.log(req);
   var userName = req.body.username;
   var url = 'https://api.github.com/users/'+userName;
 
   apiReq.getReposByUsername(url, (response)=>{
     //results.push(response.owner.login);
-    var user = response.data.login;
-    var body = Repo.Repo.create({html_url:user});
+    var user = response.data.html_url;
+    Repo.Repo.create({html_url:user});
     res.status(201).send();
   });
 });
@@ -29,7 +30,7 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
-  console.log(req);
+  //console.log(req);
   Repo.Repo.find(function (err, repos) {
     if (err) return next(err);
     res.json(repos);
