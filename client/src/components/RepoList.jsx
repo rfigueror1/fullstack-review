@@ -1,10 +1,24 @@
 import React from 'react';
+import ListItem from './ListItem.jsx';
 
-const RepoList = (props) => (
-  <div>
-    <h4> Repo List Component </h4>
-    There are {props.repos.length} repos.
-  </div>
-)
+function RepoList (props) {
+
+  const repos = props.repos;
+  console.log(repos, 'repos1');
+  var newrepos = repos.slice(0,24)
+  const listItems = newrepos.map((repo) =>
+     <li key={repo.id}>
+       {repo.html_url}
+     </li>
+   );
+
+  return(
+    <div>
+      <h4> Repo List Component </h4>
+      There are {props.repos.length} repos.
+      <ul>{listItems}</ul>
+    </div>
+  );
+}
 
 export default RepoList;

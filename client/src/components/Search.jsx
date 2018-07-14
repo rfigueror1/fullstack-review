@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 class Search extends React.Component {
   constructor(props) {
@@ -9,8 +10,9 @@ class Search extends React.Component {
   }
 
   onChange (e) {
+    console.log(e)
     this.setState({
-      term: e.target.value
+      term: e
     });
   }
 
@@ -21,9 +23,10 @@ class Search extends React.Component {
   render() {
     return (<div>
       <h4>Add more repos!</h4>
-      Enter a github username: <input value={this.state.terms} onChange={this.onChange}/>       
+      Enter a github username: <input value={this.state.terms} className='search' onChange={() => {
+        this.onChange($('.search').val())}}/>
       <button onClick={this.search}> Add Repos </button>
-    </div>) 
+    </div>)
   }
 }
 
