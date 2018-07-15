@@ -21,8 +21,8 @@ let save = (repos) => {
 module.exports.save = save;
 module.exports.Repo = Repo;
 
-var newRepo1 = new Repo({html_url:'https://api.github.com/users/octocat'});
-var newRepo2 = new Repo({html_url:'https://api.github.com/users/rfigueror1'});
-var newArray = [];
-newArray.push(newRepo1, newRepo2);
-save(newArray, ()=>{console.log('saved')});
+// var newRepo1 = new Repo({html_url:'https://api.github.com/users/octocat'});
+// var newRepo2 = new Repo({html_url:'https://api.github.com/users/rfigueror1'});
+// var newArray = [];
+// newArray.push(newRepo1, newRepo2);
+// save(newArray, ()=>{console.log('saved')});

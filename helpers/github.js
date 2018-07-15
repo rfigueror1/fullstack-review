@@ -18,6 +18,7 @@ let getReposByUsername = (url, callback) => {
     }
   };
 
+  console.log(url, 'url searched at gh');
   axios.get(url, options)
     .then((response) => {
       console.log(response);
@@ -29,3 +30,5 @@ let getReposByUsername = (url, callback) => {
 }
 
 module.exports.getReposByUsername = getReposByUsername;
+
+//getReposByUsername("https://api.github.com/users/rfigueror1", (res) => {console.log(res.data.id)});

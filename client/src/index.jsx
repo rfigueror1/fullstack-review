@@ -32,7 +32,7 @@ class App extends React.Component {
     console.log(`${term} was searched`);
     //
     axios.post('/repos', {
-    body: {username:term}
+      username:term
     })
     .then(function (response) {
       console.log(response);
